@@ -6,7 +6,7 @@ class Gbook extends \think\Controller{
 
     public function index(){
         $gbook = new \app\index\model\Gbook();
-        $rows = $gbook->order('id', 'desc')->paginate(1);
+        $rows = $gbook->order('id', 'desc')->paginate(5);
 
         $this->assign('rows', $rows);
         return view();

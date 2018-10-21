@@ -22,6 +22,13 @@ Route::get('test', 'test/index');
 Route::post('gbook/save', 'index/Gbook/save');
 #留言首页
 Route::get('gbook', 'index/Gbook/index');
+#后台首页
+Route::get('admin/index', 'admin/Index/index');
+
+Route::post('admin/login/check', 'admin/Login/check');
+Route::get('admin/login/logout', 'admin/Login/logout');
+Route::get('admin/login', 'admin/Login/index');
+
 
 return [
 
