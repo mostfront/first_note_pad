@@ -4,8 +4,8 @@ namespace  app\common\validate;
 
 class AdminLogin extends  \think\Validate{
    protected $rule = [
-//       'username' => 'require|token',
-       'username' => 'require',
+      'username' => 'require|token',
+    //    'username' => 'require',
        'password' => 'require',
    ];
 

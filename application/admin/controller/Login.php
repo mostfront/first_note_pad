@@ -7,10 +7,11 @@ class Login extends \think\Controller
 {
     public function index(){
 
-//        var_dump( password_hash('admin', PASSWORD_DEFAULT));
+//        var_dump( password_hash('admin', PASSWORD_DEFAULT));计算密码加密的哈希值把它写入数据中。
         return view();
     }
 
+    //退出登陆页
     public function logout(){
         \think\facade\Session::delete('admin_id');
         return $this->redirect('admin/login/index');

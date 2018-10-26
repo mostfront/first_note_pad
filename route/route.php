@@ -29,6 +29,12 @@ Route::post('admin/login/check', 'admin/Login/check');
 Route::get('admin/login/logout', 'admin/Login/logout');
 Route::get('admin/login', 'admin/Login/index');
 
+Route::get('admin/auser/index', 'admin/auser/index');
+Route::get('admin/auser/add', 'admin/auser/add');
+Route::get('admin/auser/modify', 'admin/auser/modify');
+Route::get('admin/auser/del', 'admin/auser/del');
+
+
 
 return [
 

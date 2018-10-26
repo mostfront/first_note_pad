@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Admin CP</a>
+                <a class="navbar-brand" href="{:url('admin/index/index')}">Admin CP</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -34,7 +34,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">欢迎{$user->username} <span class="caret"></span></a>
+                           aria-expanded="false">欢迎{$user->username}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">暂留</a></li>
                             <li role="separator" class="divider"></li>
@@ -51,7 +51,7 @@
                 <div class="list-group">
                     <a class="list-group-item active"> 系统设置 </a>
                     <a href="#" class="list-group-item">基础设置</a>
-                    <a href="#" class="list-group-item">管理员设置</a>
+                    <a href="{:url('admin/auser/index')}" class="list-group-item">管理员设置</a>
                 </div>
                 <div class="list-group">
                     <a class="list-group-item active"> 用户管理 </a>
