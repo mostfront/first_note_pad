@@ -22,19 +22,28 @@ Route::get('test', 'test/index');
 Route::post('gbook/save', 'index/Gbook/save');
 #留言首页
 Route::get('gbook', 'index/Gbook/index');
-#后台首页
-Route::get('admin/index', 'admin/Index/index');
 
-Route::post('admin/login/check', 'admin/Login/check');
-Route::get('admin/login/logout', 'admin/Login/logout');
-Route::get('admin/login', 'admin/Login/index');
+#后台路由
+Route::group('admin', function(){
+    #后台首页
+    Route::get('index', 'admin/Index/index');
+    #登陆页
+    Route::group('login', function(){
+        Route::post('check', 'admin/Login/check');
+        Route::get('logout', 'admin/Login/logout');
+        Route::get('/', 'admin/Login/index');
+    });
+   
+    //管理员管理
+    Route::group('auser', function(){
+        Route::get('index', 'admin/auser/index');
+        Route::post('save', 'admin/auser/save');
+        Route::get('add', 'admin/auser/add');
+        Route::get('modify', 'admin/auser/modify');
+        Route::get('del', 'admin/auser/del');
+    });
 
-Route::get('admin/auser/index', 'admin/auser/index');
-Route::get('admin/auser/add', 'admin/auser/add');
-Route::get('admin/auser/modify', 'admin/auser/modify');
-Route::get('admin/auser/del', 'admin/auser/del');
-
-
+});
 
 return [
 

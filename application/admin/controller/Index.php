@@ -10,4 +10,19 @@ class Index extends Base
 
         return view();
     }
+    public function add()
+    {
+
+        return view();
+    }
+    public function modify()
+    {
+
+        return view();
+    }
+    public function del()
+    {
+
+        return view();
+    }
 }

@@ -2,7 +2,7 @@
 
 {block name="content"}
 <div class="page-header">
-    <h1><span>管理员 添加</span><small class="pull-right"><a href="{:url('admin/auser/add')}" class="btn
+    <h1><span>管理员</span><small class="pull-right"><a href="{:url('admin/auser/add')}" class="btn
     btn-primary">添加</a></small></h1>
 </div>
 <div class="table-responsive">
@@ -15,31 +15,17 @@
             </tr>
         </thead>
         <tbody>
+            {volist name="auData" id="item"}
             <tr>
-                <th scope="row">1</th>
-                <td>username</td>
+                <th scope="row">{$item->id}</th>
+                <td>{$item->username}</td>
                 <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-danger">删除</a>
+                    <a href="{:url('admin/auser/modify', ['id'=>$item->id])}" class="btn btn-default">修改</a>
+                    <a href="{:url('admin/auser/del', ['id'=>$item->id])}" class="btn btn-danger" onclick='return confirm("确认删除吗?")'>删除</a>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>username</td>
-                <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-danger">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>username</td>
-                <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-danger">删除</a>
-                </td>
-            </tr>
-        </tbody>
+            {/volist}
+       </tbody>
     </table>
 </div>
 {/block}

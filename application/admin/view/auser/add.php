@@ -2,45 +2,24 @@
 
 {block name="content"}
 <div class="page-header">
-    <h1><span>管理员 添加</span><small class="pull-right"><a href="{:url('admin/auser/add')}" class="btn
-    btn-primary">添加</a></small></h1>
+    <h1><span>管理员 {$typeName}</span></h1>
 </div>
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>用户名</th>
-                <th>管理</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>username</td>
-                <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-danger">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>username</td>
-                <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-danger">删除</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>username</td>
-                <td>
-                    <a href="#" class="btn btn-default">修改</a>
-                    <a href="#" class="btn btn-danger">删除</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+<div class="col-sm-4">
+<form  action="{:url('admin/auser/save')}" method="post">
+{:token()}
+<input type='hidden' name='id' value='{$item->id|default=""}'/>
+
+<div class="form-group">
+  <label for="username">用户</label>
+    <input name="username" type="text" class="form-control" id="username" placeholder="请输入用户名" value='{$item->username|default=""}' >
+  </div>
+  <div class="form-group">
+    <label for="password">密码</label>
+    <input name="password" type="password" class="form-control" id="password" placeholder="请输入密码">
+  </div>
+  <button type="submit" class="btn btn-default">提交</button>
+</form>
 </div>
 {/block}
 

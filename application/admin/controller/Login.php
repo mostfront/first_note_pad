@@ -21,7 +21,7 @@ class Login extends \think\Controller
         $r['username'] = $this->request->post('username');
         $r['password'] = $this->request->post('password');
         $r['__token__'] = $this->request->post('__token__');
-
+// var_dump($r);
         //数据验证
         $validate = new \app\common\validate\AdminLogin();
         if( !$validate->check($r) ){
