@@ -21,5 +21,7 @@ class Base extends \think\Controller{
             return $this->error('当前页面需要登陆', url('admin/login/index'));
         }
         $this->assign('user', $user);
+       
+        $this->assign('webname', setting('webname'));
     }
 }

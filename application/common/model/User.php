@@ -2,19 +2,19 @@
 
 namespace app\common\model;
 
-class AdminUser extends Base{
+class User extends Base{
     public function storage($r){
         //数据验证
-        $validate = new \app\common\validate\AdminLogin();
+        $validate = new \app\common\validate\User();
         $scene = $r['id'] ? 'modify' : 'add';
         if( !$validate->scene($scene)->check($r) ){
-            return exception($validate->getError(), 10002);
+            return exception($validate->getError(), 10001);
         }
 
-        $au = $this;
+        $u = $this;
         //如果是修改模式，就获取目标数据对象
         if($r['id']){
-            $au = $this->where('id', $r['id'])->find();
+            $u = $this->where('id', $r['id'])->find();
         }
 
         //如果没有输入密码，则禁止数据库更新该字段
@@ -23,19 +23,7 @@ class AdminUser extends Base{
         }else{
             unset($r['password']);
         }
-        $result = $au->allowfield(true)->save($r);
+        $result = $u->allowfield(true)->save($r);
     }
-
-    //删除数据的方法
-    public function remove($id){
-        $item = $this->where('id', $id)->find();
-        if(!$item){
-            return $this->error('数据不存在');
-        }
-        $item->delete();
-
-    }
-       
-    
 
 }

@@ -28,8 +28,11 @@ class Auser extends Base{
 
         //插入数据
         $au = new AU();
-
-        $au->storage($r);
+        try{
+            $au->storage($r);
+        }catch(\Exception $e){
+            return $this->error($e->getMessage());
+        }
         return $this->redirect("admin/auser/index");
 
 
@@ -51,7 +54,7 @@ class Auser extends Base{
         $au = new AU();
         $item = $au->where('id', $id)->find();
         if(!$item){
-            return $thi->error('数据不存在');
+            return $this->error('数据不存在');
         }
 
         $data = [

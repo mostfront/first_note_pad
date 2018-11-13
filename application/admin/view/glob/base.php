@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>{$webname}{block name='webname'}{/block}</title>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" ">
 
@@ -50,21 +50,21 @@
             <div class='col-sm-2'>
                 <div class="list-group">
                     <a class="list-group-item active"> 系统设置 </a>
-                    <a href="#" class="list-group-item">基础设置</a>
+                    <a href="{:url('admin/setting/index')}" class="list-group-item">基础设置</a>
                     <a href="{:url('admin/auser/index')}" class="list-group-item">管理员设置</a>
                 </div>
                 <div class="list-group">
                     <a class="list-group-item active"> 用户管理 </a>
-                    <a href="#" class="list-group-item"> 所有用户 </a>
+                    <a href="{:url('admin/user/index')}" class="list-group-item"> 所有用户 </a>
                 </div>
                 <div class="list-group">
                     <a class="list-group-item active"> 内容管理 </a>
-                    <a href="#" class="list-group-item"> 所有内容 </a>
+                    <a href="{:url('admin/content/index')}" class="list-group-item"> 所有内容 </a>
                 </div>
             </div>
             <div class='col-sm-10'>
             {block name="content"}
-            我是动态区域
+            留给子模板继承
             {/block}
             </div>
         </div>
