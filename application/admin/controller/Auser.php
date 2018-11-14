@@ -34,9 +34,6 @@ class Auser extends Base{
             return $this->error($e->getMessage());
         }
         return $this->redirect("admin/auser/index");
-
-
-       
     }
 
     //添加用户信息
@@ -67,12 +64,13 @@ class Auser extends Base{
     public function del()
     {
         $id = $this->request->get('id');
-
         $au = new AU();
-        
+        try{
         $au->remove($id);
-        return $this->redirect('admin/auser/index');
+        }catch(\Exception $e){
+            return $this->error(getMessage());
+        }
+        return $this->success("操作成功");
     }
-
 }
 

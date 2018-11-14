@@ -20,7 +20,8 @@
             <tr>
                 <th>#</th>
                 <th>标题</th>
-                <th>创建人</th>
+                <th>管理员</th>
+                <th>用户</th>
                 <th>创建时间</th>
                 <th>修改时间</th>
                 <th>状态</th>
@@ -32,12 +33,14 @@
             <tr>
                 <th scope="row">{$item->id}</th>
                 <td>{$item->title}</td>
-                <td>{$item->admin_user::get(1)}/{$item->user_id}</td>
+                <td>{$item->admin_user->username|default=''}</td>
+                <td>{$item->user->nickname|default=''}</td>
                 <td>{$item->create_time||date='Y-m-d H:i:s'}</td>
                 <td>{$item->update_time||date='Y-m-d H:i:s'}</td>
                 <td>{$content_status[$item->content_status]|raw}</td>
                 <td>
                     <a href="{:url('admin/content/modify', ['id'=>$item->id])}" class="btn btn-default">修改</a>
+                    <a href="{:url('admin/content/delete', ['id'=>$item->id])}" class="btn btn-default">删除</a>
                     <a href="{:url('admin/content/status', ['id'=>$item->id, 'status' => $item->content_status])}" class="btn btn-danger">切换状态</a>
                 </td>
             </tr>

@@ -13,23 +13,22 @@ class Content extends Base
 
     public function index()
     {
+        // 搜索功能
         $key= trim($this->request->get('key'));
-
-        $c = new C();
-
+        $c = C::with('admin_user', 'user');
+        
         //搜索条件
         if($key){
             $c = $c -> where('title', 'like', "%{$key}%");
-          
         }
 
+        // 首页显示数据实例化与传递
         $cData = $c->order('id', 'sec')->paginate(10);
         $data = [
             'cData' => $cData,
             'key' => $key,
         ];
         return view(null, $data);
-       
     }
     public function add()
     {
@@ -98,7 +97,13 @@ class Content extends Base
         return $this->success("操作成功");
     }
     public function delete(){
-
-        return view();
+        $id = $this->request->get('id');
+        $c = new C();
+        try{
+            $c->remove($id);
+        }catch(\Exception $e){
+            return $this->error($e->getMessage());
+        }
+        return $this->success("操作成功");
     }
 }

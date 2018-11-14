@@ -30,7 +30,7 @@ class AdminUser extends Base{
     public function remove($id){
         $item = $this->where('id', $id)->find();
         if(!$item){
-            return $this->error('数据不存在');
+            return exception("数据不存在", 10004);
         }
         $item->delete();
 
