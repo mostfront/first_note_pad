@@ -19,4 +19,21 @@ class Content extends Base{
         }
         $item->delete();
     }
+
+    public function storage($r){
+        //数据验证
+        $validate = new \app\common\validate\Content();
+        $scene = $r['id'] ? 'modify' : 'add';
+        if( !$validate->scene($scene)->check($r) ){
+            return exception($validate->getError(), 10005);
+        }
+
+        $c = $this;
+        //如果是修改模式，就获取目标数据对象
+        if($r['id']){
+            $c = $this->where('id', $r['id'])->find();
+        }
+
+        $result = $c->allowfield(true)->save($r);
+    }
 }

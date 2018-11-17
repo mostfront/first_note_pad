@@ -41,17 +41,12 @@ class Content extends Base
     {
         $r = [
             'id' => $this->request->post('id'),
-            'password' => $this->request->post('password'),
-            'nickname' => $this->request->post('nickname'),
-            'phone' => $this->request->post('phone'),
-            'email' => $this->request->post('email'),
+            'title' => $this->request->post('title'),
+            'content' => $this->request->post('content'),
             'content_status' => $this->request->post('content_status'),
             '__token__' => $this->request->post('__token__'),
+            'admin_user_id' => $this->user->id,
         ];
-        //如果你处于添加模式，则追加用户数据，编辑模式下不允许修改用户名
-        if($r['id'] < 1){
-            $r['title'] = $this->request->post('title');
-        }
 
         $c = new C();
         try{
@@ -75,7 +70,6 @@ class Content extends Base
         $data = [
             'typeName' => '修改',
             'item' => $item,
-            'disabled' => "disabled",
         ];
         return view('content/add', $data);
     }    
@@ -105,5 +99,20 @@ class Content extends Base
             return $this->error($e->getMessage());
         }
         return $this->success("操作成功");
+    }
+
+    //上传的方法
+    public function up(){
+        $file = $this->request->file('file1');
+        $info = $file->validate(['size'=>1024*2048,'ext'=>'jpg,png,gif'])->rule('uniqid')->move('./uploads/editor', '');
+        $result = [];
+        if($info){
+            $result['success'] = true;
+            $result['file_path'] = url("./uploads/editor/".$info->getSaveName());
+        }else{
+            $result['success'] = false;
+            $result['msg'] = $file->getError();
+        }
+        return json($result);
     }
 }

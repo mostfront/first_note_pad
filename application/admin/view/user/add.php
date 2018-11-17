@@ -39,7 +39,7 @@
     {/volist}
   </select>
   <script>
-    $("#user_status").val({$item->user_status});
+    $("#user_status").val({$item->user_status|default=1});
   </script>
 </div>
   <button type="submit" class="btn btn-default">提交</button>

@@ -20,8 +20,11 @@ class Base extends \think\Controller{
         if(!$user){
             return $this->error('当前页面需要登陆', url('admin/login/index'));
         }
+      
+        //赋值类属性，方便子控制器调用
+        $this->user = $user;
+        
         $this->assign('user', $user);
-       
         $this->assign('webname', setting('webname'));
     }
 }

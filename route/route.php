@@ -66,6 +66,7 @@ Route::group('admin', function(){
         Route::get('modify', 'admin/content/modify');
         Route::get('status', 'admin/content/status');
         Route::get('delete', 'admin/content/delete');
+        Route::post('up', 'admin/content/up');
     });
 
 });
