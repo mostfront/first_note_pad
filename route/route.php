@@ -9,19 +9,35 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-Route::get('think', function () {
-    return 'hello,ThinkPHP5!';
-});
+Route::get('/', 'index/index');
+//个人主页
+Route::get('/home/:id', 'index/home/index')->pattern(['id'=>'\d+']);
+Route::get('/read/:id', 'index/index/read')->pattern(['id'=>'\d+']);
 
-Route::get('hello/:name', 'index/hello');
-
-Route::get('login', 'index/login');
-Route::get('test', 'test/index');
+Route::get('signup', 'index/sign/up');
+Route::post('signup', 'index/sign/up_save');
+Route::get('signin', 'index/sign/in');
+Route::post('signin', 'index/sign/in_check');
+Route::get('logout', 'index/sign/logout');
 
 #提交留言
 Route::post('gbook/save', 'index/Gbook/save');
 #留言首页
 Route::get('gbook', 'index/Gbook/index');
+#个人中心
+Route::group('u', function(){
+    #用户中心首页
+    Route::get('index', 'index/UserCenter/index');
+    Route::get('profile', 'index/UserCenter/profile');
+    Route::post('profile', 'index/UserCenter/profile_save');
+    Route::get('blog/index', 'index/UserBlog/index');
+    Route::get('blog/add', 'index/UserBlog/add');
+    Route::get('blog/modify', 'index/UserBlog/modify');
+    Route::post('blog/save', 'index/UserBlog/save');
+    Route::get('blog/status', 'index/UserBlog/status');
+    Route::get('blog/del', 'index/UserBlog/del');
+    Route::post('blog/up', 'index/UserBlog/up');
+});
 
 #后台路由
 Route::group('admin', function(){
@@ -65,7 +81,7 @@ Route::group('admin', function(){
         Route::get('add', 'admin/content/add');
         Route::get('modify', 'admin/content/modify');
         Route::get('status', 'admin/content/status');
-        Route::get('delete', 'admin/content/delete');
+        Route::get('del', 'admin/content/del');
         Route::post('up', 'admin/content/up');
     });
 

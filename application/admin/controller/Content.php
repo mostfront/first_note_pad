@@ -90,7 +90,7 @@ class Content extends Base
         ]);
         return $this->success("操作成功");
     }
-    public function delete(){
+    public function del(){
         $id = $this->request->get('id');
         $c = new C();
         try{

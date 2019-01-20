@@ -30,6 +30,9 @@ class User extends  \think\Validate{
    public function sceneAdd(){
        return $this->append('username', 'require|checkUser');
    }
+   public function sceneLogin(){
+       return $this->append('username', 'require')->only(['username', 'password']);
+   }
    
    /**
     * 添加场景的验证规则取消
@@ -37,6 +40,14 @@ class User extends  \think\Validate{
    public function sceneModify(){
        return $this
        ->remove('password', 'require');
+   }
+   /**
+    * 前台用户修改资料的验证场景
+    */
+   public function sceneProfile(){
+       return $this
+       ->remove('password', 'require')
+       ->remove('user_status', 'require');
    }
 
 

@@ -40,7 +40,7 @@
                 <td>{$content_status[$item->content_status]|raw}</td>
                 <td>
                     <a href="{:url('admin/content/modify', ['id'=>$item->id])}" class="btn btn-default">修改</a>
-                    <a href="{:url('admin/content/delete', ['id'=>$item->id])}" class="btn btn-default">删除</a>
+                    <a href="{:url('admin/content/del', ['id'=>$item->id])}" class="btn btn-default">删除</a>
                     <a href="{:url('admin/content/status', ['id'=>$item->id, 'status' => $item->content_status])}" class="btn btn-danger">切换状态</a>
                 </td>
             </tr>

@@ -15,7 +15,7 @@
     {volist name="setting" id="item"}
     <div class="form-group">
     <label for="{$item->key}">{$item->name}</label>
-        <input name="formdata[{$item->key}]" type="text" class="form-control" id="{$item->key}" placeholder="请输入用户名" value='{$item->value|default=""}' >
+        <input name="formdata[{$item->key}]" type="text" class="form-control" id="{$item->key}" placeholder="请输入网站名称" value='{$item->value|default=""}' >
     </div>
     {/volist}
   <button type="submit" class="btn btn-default">提交</button>
